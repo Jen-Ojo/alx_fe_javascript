@@ -1,0 +1,13 @@
+:root{ --bg:#f6f8fb; --card:#fff; --accent:#2b6cb0 }
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:#111; margin:0; padding:24px}
+.container{max-width:900px;margin:0 auto}
+.card{background:var(--card);border-radius:10px;padding:16px;box-shadow:0 6px 18px rgba(18,38,63,0.06);margin-bottom:16px}
+.row{display:flex;gap:8px;align-items:center}
+.quote{min-height:80px;display:flex;align-items:center;justify-content:center;font-style:italic;padding:20px}
+#quotesList{list-style:none;padding:0;margin:0}
+#quotesList li{padding:10px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:12px}
+button{cursor:pointer;padding:8px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:linear-gradient(#fff,#f3f6fb)}
+input,select{padding:8px;border-radius:8px;border:1px solid #ddd}
+.remove-btn{background:transparent;border:0;color:#c53030}
+.small{font-size:0.9rem;color:#555}

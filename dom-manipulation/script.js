@@ -9,11 +9,9 @@ let quotes = [
 function displayRandomQuote() {
     const quoteDisplay = document.getElementById("quoteDisplay");
 
-    // Select a random quote
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const randomQuote = quotes[randomIndex];
 
-    // Update the DOM with the selected quote
     quoteDisplay.textContent = `"${randomQuote.text}" - ${randomQuote.category}`;
 }
 
@@ -22,26 +20,21 @@ function addQuote() {
     const textInput = document.getElementById("newQuoteText");
     const categoryInput = document.getElementById("newQuoteCategory");
 
-    const newText = textInput.value.trim();
-    const newCategory = categoryInput.value.trim();
+    const text = textInput.value.trim();
+    const category = categoryInput.value.trim();
 
-    if (newText === "" || newCategory === "") {
+    if (text === "" || category === "") {
         return;
     }
 
-    // Create new quote object
-    const newQuote = { text: newText, category: newCategory };
-
-    // Add to array
+    const newQuote = { text: text, category: category };
     quotes.push(newQuote);
 
-    // Clear inputs
     textInput.value = "";
     categoryInput.value = "";
 
-    // Update DOM by showing a new random quote
     displayRandomQuote();
 }
 
-// Event listener on "Show New Quote" button
+// Event listener for "Show New Quote"
 document.getElementById("newQuote").addEventListener("click", displayRandomQuote);

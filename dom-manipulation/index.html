@@ -1,47 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dynamic Quote Generator</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<main class="container">
-<h1>Dynamic Quote Generator</h1>
-
-
-<section id="controls" class="card">
-<div class="row">
-<label for="categorySelect">Category:</label>
-<select id="categorySelect">
-<option value="all">All</option>
-</select>
-
+<div id="quoteDisplay"></div>
 
 <button id="newQuote">Show New Quote</button>
+
+<div>
+  <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+  <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+  <button onclick="addQuote()">Add Quote</button>
 </div>
+<script>
+  const quotes = [
+    { text: "The best way to predict the future is to invent it.", category: "Inspiration" },
+    { text: "Life is 10% what happens to us and 90% how we react to it.", category: "Motivation" },
+    { text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.", category: "Individuality" }
+  ];
 
+  function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+  }
 
-<div id="quoteDisplay" class="quote card"></div>
-</section>
+  function displayQuote() {
+    const quote = getRandomQuote();
+    document.getElementById('quoteDisplay').innerText = `"${quote.text}" - Category: ${quote.category}`;
+  }
 
+  function addQuote() {
+    const newQuoteText = document.getElementById('newQuoteText').value;
+    const newQuoteCategory = document.getElementById('newQuoteCategory').value;
 
-<section id="addQuoteSection" class="card">
-<h2>Add a new quote</h2>
-<form id="addQuoteForm">
-<input id="newQuoteText" type="text" placeholder="Enter a new quote" required />
-<input id="newQuoteCategory" type="text" placeholder="Enter quote category" required />
-<button type="submit">Add Quote</button>
-</form>
+    if (newQuoteText && newQuoteCategory) {
+      quotes.push({ text: newQuoteText, category: newQuoteCategory });
+      document.getElementById('newQuoteText').value = '';
+      document.getElementById('newQuoteCategory').value = '';
+      alert('New quote added!');
+    } else {
+      alert('Please enter both quote text and category.');
+    }
+  }
 
+  document.getElementById('newQuote').addEventListener('click', displayQuote);
 
-<h3>All quotes</h3>
-<ul id="quotesList"></ul>
-</section>
-</main>
-
-
-<script src="script.js"></script>
-</body>
-</html>
+  // Display an initial quote
+  displayQuote();

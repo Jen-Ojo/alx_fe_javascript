@@ -1,44 +1,25 @@
-<div id="quoteDisplay"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Random Quote Generator</h1>
 
-<button id="newQuote">Show New Quote</button>
+    <div id="quoteDisplay">Your quote will appear here.</div>
 
-<div>
-  <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-  <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-  <button onclick="addQuote()">Add Quote</button>
-</div>
-<script>
-  const quotes = [
-    { text: "The best way to predict the future is to invent it.", category: "Inspiration" },
-    { text: "Life is 10% what happens to us and 90% how we react to it.", category: "Motivation" },
-    { text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.", category: "Individuality" }
-  ];
+    <button id="newQuote">Show New Quote</button>
 
-  function getRandomQuote() {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    return quotes[randomIndex];
-  }
+    <h2>Add a New Quote</h2>
 
-  function displayQuote() {
-    const quote = getRandomQuote();
-    document.getElementById('quoteDisplay').innerText = `"${quote.text}" - Category: ${quote.category}`;
-  }
+    <input id="newQuoteText" type="text" placeholder="Enter quote text">
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category">
 
-  function addQuote() {
-    const newQuoteText = document.getElementById('newQuoteText').value;
-    const newQuoteCategory = document.getElementById('newQuoteCategory').value;
+    <button onclick="addQuote()">Add Quote</button>
 
-    if (newQuoteText && newQuoteCategory) {
-      quotes.push({ text: newQuoteText, category: newQuoteCategory });
-      document.getElementById('newQuoteText').value = '';
-      document.getElementById('newQuoteCategory').value = '';
-      alert('New quote added!');
-    } else {
-      alert('Please enter both quote text and category.');
-    }
-  }
-
-  document.getElementById('newQuote').addEventListener('click', displayQuote);
-
-  // Display an initial quote
-  displayQuote();
+    <script src="script.js"></script>
+</body>
+</html>

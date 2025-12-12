@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Generator</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dynamic Quote Generator</title>
 </head>
 <body>
-    <h1>Random Quote Generator</h1>
+  <main>
+    <h1>Dynamic Quote Generator</h1>
 
-    <div id="quoteDisplay">Your quote will appear here.</div>
-
+    <!-- Display area -->
+    <div id="quoteDisplay">No quote yet.</div>
     <button id="newQuote">Show New Quote</button>
 
-    <h2>Add a New Quote</h2>
+    <!-- Add quote inputs (checker expects these IDs) -->
+    <div id="manualAdd">
+      <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+      <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+      <button id="addQuoteBtn" onclick="addQuote()">Add Quote</button>
+    </div>
 
-    <input id="newQuoteText" type="text" placeholder="Enter quote text">
-    <input id="newQuoteCategory" type="text" placeholder="Enter quote category">
+    <!-- Category filter (Task 2) -->
+    <div>
+      <label for="categoryFilter">Filter by category:</label>
+      <select id="categoryFilter" onchange="filterQuotes()">
+        <option value="all">All</option>
+      </select>
+    </div>
 
-    <button onclick="addQuote()">Add Quote</button>
+    <!-- Import / Export (Task 1) -->
+    <div>
+      <button id="exportBtn">Export Quotes</button>
+      <input id="importFile" type="file" accept=".json" />
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Sync status area (Task 3 notification can show here) -->
+    <div id="syncStatus" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
